@@ -1,6 +1,7 @@
 import "./Welcome.css";
 import NewDate from "./NewDate";
 import Person from "./Person";
+import Wrapper from "./Wrapper";
 
 function Welcome(props) {
   const data = {
@@ -10,11 +11,11 @@ function Welcome(props) {
     userName: props.userName,
   };
   return (
-    <div>
+    <Wrapper>
       <h1>Hello, {props.name}</h1>
       <NewDate today={props.today}></NewDate>
       <Person info={data}></Person>
-    </div>
+    </Wrapper>
   );
 }
 
