@@ -13,7 +13,19 @@ import CardWrapper from "./components/CardWrapper";
 import freelancer1 from "./assets/img/freelancer1.jpg";
 
 function App() {
-  return (
+
+  const freelancer = [ 
+    {
+      id : 0,
+      title : "MR",
+      lastName : "Rick",
+      role : "UI/UX Designer",
+      fee : 85,
+      reviews : 105
+  },
+]
+
+  return ( <div className="card-container">
     <CardWrapper>
       <div className="img-container">
         <div className="img-wrapper">
@@ -22,11 +34,11 @@ function App() {
         </div>
       </div>
       <div className="info-container">
-        <h3>MR ROBERT</h3>
+        <h3>MR RICK</h3>
         <p>UI/UX Designer</p>
         <div className="hire">
           <div>
-            Rate: <span>$85/hr</span>{" "}
+            Rate: <span className="price">$85/hr</span>{" "}
           </div>
           <button className="hire-button">Hire Me</button>
         </div>
@@ -46,21 +58,22 @@ function App() {
             <FontAwesomeIcon icon={faCircleCheck} />
             <span>Verified</span>
           </div>
-          <span>
+          <span className="circle available">
             <FontAwesomeIcon icon={faDollarSign} />
           </span>
-          <span>
+          <span className="circle available">
             <FontAwesomeIcon icon={faEnvelope} />
           </span>
-          <span>
+          <span className="circle not-available">
             <FontAwesomeIcon icon={faAddressBook} />
           </span>
-          <span>
+          <span className="circle not-available">
             <FontAwesomeIcon icon={faPhoneFlip} />
           </span>
         </div>
       </div>
     </CardWrapper>
+  </div>
   );
 }
 
