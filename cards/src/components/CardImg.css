@@ -1,0 +1,25 @@
+.img-container {
+    padding-top: 1em;
+  }
+  .img-container .img-wrapper {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .img-container img {
+    max-width: 100px;
+    max-height: auto;
+    border-radius: 50%;
+  }
+  .img-container span.dot {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    background-color: #1cdd1c;
+    border: 2px solid white;
+    border-radius: 50%;
+    position: absolute;
+    top: 77px;
+    right: 5px;
+  }
