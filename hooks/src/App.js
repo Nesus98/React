@@ -1,17 +1,11 @@
-import "./App.css";
-import { useState } from "react";
-import Person from "./component/Person"
+import './App.css';
+import Greetings from './component/Greetings';
+// import Timer from './component/Timer';
 
 function App() {
-  // const [count, setCount] = useState(0);
-
   return (
-    <div>
-      <Person></Person>
-      {/* <p>Has clickeado {count} veces </p>
-      <button onClick={()=>{setCount(count+1)}}>Pulsame!</button> */}
-    </div>
-  );
+        <Greetings name="John"></Greetings>
+    );
 }
 
 export default App;
