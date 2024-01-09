@@ -1,4 +1,4 @@
-// import './ItemInfo.css';
+import './ItemInfo.css';
 
 function ItemInfo(props) {
   return (
