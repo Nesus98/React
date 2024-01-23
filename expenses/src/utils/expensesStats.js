@@ -1,4 +1,5 @@
 export const expensesStats = (itemsList) => {
+  // console.log(itemsList.lenght);
   let incomes = 0,
     expenses = 0,
     total = 0;
@@ -7,9 +8,9 @@ export const expensesStats = (itemsList) => {
   }
   itemsList.forEach((element) => {
     if (element.money.income) {
-      incomes += element.money.amount;
+      incomes +=  +element.money.amount;
     } else {
-      expenses += element.money.amount;
+      expenses +=  +element.money.amount;
     }
   });
   total = Math.abs(incomes) + Math.abs(expenses);

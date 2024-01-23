@@ -20,11 +20,19 @@ import ItemContainer from "./wrappers/ItemContainer";
 import Wrapper from "./wrappers/Wrapper";
 import { useState, useEffect } from "react";
 import ExpensesFilter from "./ExpensesFilter";
+import { expensesStats } from "../utils/expensesStats";
+import { monthToString } from "../utils/monthToString";
+import InfoAlert from "./alerts/InfoAlert";
 
 function Expenses(props) {
+  const [filter, setFilter] = useState(
+    monthToString(new Date().toLocaleDateString())
+  );
   const [expenses, setNewExpenses] = useState(itemsList);
-
-  // let expense = {};
+  const filteredMonth = (month) => {
+    setFilter(month);
+  };
+  let stats = [0, 0];
   const getIcons = (category) => {
     switch (category) {
       case "incoming":
@@ -42,7 +50,11 @@ function Expenses(props) {
     }
   };
 
-  useEffect(()=>{
+  let filteredMonths = [];
+      
+
+
+  useEffect(() => {
     if (Object.keys(props.onNewExpense).length > 0) {
       const expense = {
         icons: getIcons(props.onNewExpense.category),
@@ -57,26 +69,44 @@ function Expenses(props) {
         },
       };
       setNewExpenses([...expenses, expense]);
+      props.onClearExpense()
     }
-  },[props.onNewExpense])
+  }, [props.onNewExpense]);
 
+  if (filter !== "") {
+    filteredMonths = expenses.filter(
+      (item) => monthToString(item.data.date) === filter
+    );
+    if (filteredMonths.length > 0) {
+      stats = expensesStats(filteredMonths);
+    } else {
+      stats = [0, 0];
+    }
+  }
 
 
   return (
     <div>
-      <ExpensesFilter months={expenses} />
-    <Wrapper
-      content={itemsList.map((item, index) => {
-        return (
-          <ItemContainer key={index}>
-            <ItemIcon icons={item.icons} classes={item.classes} />
-            <ItemInfo data={item.data} />
-            <ItemCost money={item.money} />
-          </ItemContainer>
-        );
-      })}
+      <ExpensesFilter
+        onStats={stats}
+        onSelectMonth={filteredMonth}
+        month={expenses}
       />
-      </div>
+      <Wrapper
+        content={
+          (filteredMonths.length > 0 &&
+            filteredMonths.map((item, index) => {
+              return (
+                <ItemContainer key={index}>
+                  <ItemIcon icons={item.icons} classes={item.classes} />
+                  <ItemInfo data={item.data} />
+                  <ItemCost money={item.money} />
+                </ItemContainer>
+              );
+            })) || <InfoAlert info="No expenses availables." />
+        }
+      />
+    </div>
   );
 }
 

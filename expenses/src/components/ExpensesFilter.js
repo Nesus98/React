@@ -1,17 +1,22 @@
 import "./ExpensesFilter.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Wrapper from "./wrappers/Wrapper";
 import { expensesStats } from "../utils/expensesStats";
 import { monthToString } from "../utils/monthToString";
 
 function ExpensesFilter(props) {
+  const [stats, setStats] = useState([0, 0]);
+  console.log(stats);
   const [month, setMonth] = useState(
     monthToString(new Date().toLocaleDateString())
   );
-  const handleSelect = () => {
-    setMonth(e.target.value)
+  const handleSelect = (e) => {
+    setMonth(e.target.value);
+    props.onSelectMonth(e.target.value);
   };
-  const stats = expensesStats(props.months);
+  useEffect(() => {
+    setStats(props.onStats);
+  }, [month, props.onStats]);
   return (
     <Wrapper
       content={
@@ -20,7 +25,10 @@ function ExpensesFilter(props) {
             <div className="label">
               <p>Incomes %</p>
               <div className="bar">
-                <div className="incomes" style={{ width: `${stats[0]}` }}></div>
+                <div
+                  className="incomes"
+                  style={{ width: `${stats[0]}%` }}
+                ></div>
               </div>
             </div>
             <div className="label">
@@ -28,7 +36,7 @@ function ExpensesFilter(props) {
               <div className="bar">
                 <div
                   className="expenses"
-                  style={{ width: `${stats[1]}` }}
+                  style={{ width: `${stats[1]}%` }}
                 ></div>
               </div>
             </div>
@@ -42,7 +50,7 @@ function ExpensesFilter(props) {
               <option value="May">May</option>
               <option value="June">June</option>
               <option value="July">July</option>
-              <option value="August">January</option>
+              <option value="August">August</option>
               <option value="September">September</option>
               <option value="October">October</option>
               <option value="November">November</option>
