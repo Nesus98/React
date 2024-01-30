@@ -1,8 +1,9 @@
 import "./App.css";
+import {Fragment} from "react";
 
 function App() {
   return (
-    <div>
+    <Fragment>
       <h1>Hello World!</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
@@ -12,9 +13,8 @@ function App() {
         Voluptates reprehenderit id quis architecto asperiores quod iure sequi
         odit optio, esse delectus?
       </p>
-    </div>
+    </Fragment>
   );
 }
 
 export default App;
-
