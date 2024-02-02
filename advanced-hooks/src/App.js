@@ -1,15 +1,15 @@
-import "./App.css";
-import Counter from "./components/Counter";
-// import{ useReducer } from "react"
-import FilterReducer from "./components/FilterReducer";
+import './App.css';
+import StringProvider from './store/StringProvider';
+import StringModifier from './components/StringModifier';
+import StringReader from './components/StringReader';
 
 function App() {
-  return(
-    <>
-   {/* <FilterReducer/> */}
-   <Counter></Counter>
-    </>
-)
+  return (
+    <StringProvider>
+        <StringReader></StringReader>
+        <StringModifier></StringModifier>
+    </StringProvider>
+    );
 }
 
 export default App;
