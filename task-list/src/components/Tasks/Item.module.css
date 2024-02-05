@@ -1,10 +1,35 @@
-.task-item{
-    border-bottom: 1px solid #e4e4e4;
-    background-color: #e1e1e1;
-    background-color: #e0e0e0;
-    padding: 1rem 2rem;
-    cursor: pointer;
+.task-item {
+  border-bottom: 1px solid #e4e4e4;
+  background-color: #e1e1e1;
+  background-color: #e0e0e0;
+  padding: 1rem 2rem;
+  cursor: pointer;
 }
-.even{
-    background-color: #FAFAFA;
+.title {
+  width: 80%;
+  padding: 1em;
+  transition: all 0.3s ease;
+}
+.even {
+  background-color: #fafafa;
+}
+.actions {
+  padding: 0.7em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin-right: 1em;
+}
+.edit-mode {
+  border-color: #9a9595;
+  border-radius: 0.3rem;
+}
+.edit {
+  background-color: #4caf50;
+}
+.delete {
+  background-color: #f44336;
 }
